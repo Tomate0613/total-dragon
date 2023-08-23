@@ -1,0 +1,36 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "tomate.totaldragon.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "EnderDragonMixin",
+    "EnderDragonPhaseManagerMixin",
+    "DragonFireballMixin",
+    "AreaEffectCloudReapplicationDelayAccessor",
+    "AbstractHurtingProjectileMixin",
+    "DragonChargePlayerPhaseMixin",
+    "EnderManMixin",
+    "DragonSittingScanningPhaseMixin",
+    "AbstractDragonSittingPhaseMixin",
+    "EndCrystalMixin",
+    "PlayerListMixin",
+    "PhantomMixin",
+    "DragonHoldingPatternPhaseMixin",
+    "EntityDimensionsAccessor",
+    "PlayerMixin",
+    "DragonLandingPhaseMixin",
+    "EnderDragonPhaseMixin",
+    "EnderDragonPartMixin",
+    "DragonStrafePlayerPhaseMixin",
+    "SpikeFeatureMixin",
+    "ServerPlayerMixin"
+  ],
+  "client": [],
+  "server": [
+      "PlayerListMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

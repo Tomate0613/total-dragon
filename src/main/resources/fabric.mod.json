@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "total-dragon",
+  "version": "${version}",
+
+  "name": "Total Dragon",
+  "description": "A fabric mod improving minecraft's end fight",
+
+  "authors": [
+    {
+      "name": "Tomate0613"
+    }
+  ],
+  "contact": {
+    "sources": "https://github.com/Tomate0613/total-dragon"
+  },
+
+  "license": "MIT",
+  "icon": "assets/totaldragon/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "client": ["tomate.totaldragon.client.TotalDragonClient"],
+    "main": ["tomate.totaldragon.TotalDragon"]
+  },
+
+  "mixins": ["total-dragon.mixins.json"],
+
+  "accessWidener": "total-dragon.accesswidener",
+
+  "depends": {
+    "fabricloader": ">=0.14.19",
+    "minecraft": "1.20.*",
+
+    "fabric": "*"
+  },
+
+  "recommends": {
+    "combatroll": "*"
+  }
+}
