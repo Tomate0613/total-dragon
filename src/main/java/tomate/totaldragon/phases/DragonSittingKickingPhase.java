@@ -1,6 +1,7 @@
 package tomate.totaldragon.phases;
 
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
@@ -42,7 +43,7 @@ public class DragonSittingKickingPhase extends AbstractDragonSittingPhase {
 
             if (nearestPlayer != null) {
                 dragon.getPhaseManager().setPhase(EnderDragonPhase.CHARGING_PLAYER);
-                FightState.targetPlayer = nearestPlayer;
+                FightState.targetPlayer = (ServerPlayer) nearestPlayer;
                 return;
             }
 
