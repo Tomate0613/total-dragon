@@ -238,6 +238,7 @@ public class TotalDragon implements ModInitializer {
 
     }
 
+    // Needed for enchantments from other mods
     public void enchant(ItemStack stack, String enchantment, int i) {
         stack.getOrCreateTag();
         if (!Objects.requireNonNull(stack.getTag()).contains(TAG_ENCH, 9)) {
