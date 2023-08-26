@@ -69,7 +69,7 @@ public class DragonFireballMixin extends AbstractHurtingProjectile {
         if (this.level().isClientSide || !(nearestEntity instanceof ServerPlayer))
             return;
 
-        TotalDragon.spawnParticleLine(startingPos, nearestEntity.position(), 10, (ServerPlayer) nearestEntity);
+        TotalDragon.spawnParticleLine(startingPos, nearestEntity.position(), 10, (ServerPlayer) nearestEntity, this.level());
 
         AreaEffectCloud areaEffectCloud = new AreaEffectCloud(this.level(), nearestEntity.getX(), nearestEntity.getY() + 0.5, nearestEntity.getZ());
 
