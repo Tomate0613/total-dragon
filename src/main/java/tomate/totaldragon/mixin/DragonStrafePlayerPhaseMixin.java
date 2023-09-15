@@ -40,6 +40,11 @@ public abstract class DragonStrafePlayerPhaseMixin extends AbstractDragonPhaseIn
             dragon.getPhaseManager().setPhase(EnderDragonPhase.HOLDING_PATTERN);
             ci.cancel();
         }
+
+        if(attackTarget != null && attackTarget.getY() > 70) {
+            dragon.getPhaseManager().setPhase(EnderDragonPhase.CHARGING_PLAYER);
+            ci.cancel();
+        }
     }
 
     @Inject(at = @At("HEAD"), method = "begin")
