@@ -19,12 +19,13 @@ public class DragonCurve {
     }
 
     public void generateNext() {
-        if(dragon.position().y < 70) {
-            direction = new Vec3(direction.x, 0, direction.y);
-        }
-
         var startingDirection = direction.scale(-1);
         startingPoint = dragon.position();
+
+        if(dragon.position().add(startingDirection).y < 70) {
+            startingDirection = new Vec3(startingDirection.x, 0, startingDirection.y);
+        }
+
         middlePoint = startingDirection.scale(1 * startingPoint.distanceTo(endingPoint)).add(startingPoint);
         curveProgress = 0;
     }
