@@ -42,6 +42,7 @@ public class DragonCurve {
         var pos = q1.lerp(q2, curveProgress);
         var distance = pos.distanceTo(dragon.position());
 
+        dragon.setDeltaMovement(pos.subtract(dragon.position()));
         dragon.setPos(pos);
 
         direction = q2.vectorTo(q1).normalize();
