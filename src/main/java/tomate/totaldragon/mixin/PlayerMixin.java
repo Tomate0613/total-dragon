@@ -10,6 +10,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import tomate.totaldragon.DragonConfig;
 
@@ -20,6 +21,9 @@ import java.util.Objects;
 public abstract class PlayerMixin extends LivingEntity {
     @Unique
     private DamageSource fellOutOfWorldSource;
+
+    @Unique
+    private int fallOutOfWorldTicks = 0;
 
     protected PlayerMixin(EntityType<? extends LivingEntity> entityType, Level level) {
         super(entityType, level);
@@ -38,6 +42,7 @@ public abstract class PlayerMixin extends LivingEntity {
                 var position = position();
                 teleportTo(overworld, position.x, 400, position.z, null, getYHeadRot(), xRotO);
                 fellOutOfWorldSource = damageSource;
+                fallOutOfWorldTicks = 0;
             }
         }
 
@@ -46,6 +51,16 @@ public abstract class PlayerMixin extends LivingEntity {
             fellOutOfWorldSource = null;
 
             cir.setReturnValue(true);
+        }
+    }
+
+    @Inject(at = @At("HEAD"), method = "tick")
+    public void tick(CallbackInfo ci) {
+        if(fellOutOfWorldSource != null) {
+            if(fallOutOfWorldTicks++ > 8 * 20) {
+                hurt(fellOutOfWorldSource, 10000);
+                fellOutOfWorldSource = null;
+            }
         }
     }
 }
