@@ -12,7 +12,7 @@ public abstract class EnderManMixin extends Monster {
         super(entityType, level);
     }
 
-    // Make endermans immune to potions so that they don't die from the dragon breath areaeffectcloud
+    // Make EnderMans immune to potions so that they don't die from the DragonBreath AreaEffectClouds
     @Override
     public boolean isAffectedByPotions() {
         return false;
