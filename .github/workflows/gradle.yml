@@ -12,8 +12,8 @@ jobs:
       matrix:
         # Use these Java versions
         java: [
-          17,    # Current Java LTS & minimum supported by Minecraft
-        ]
+            17, # Current Java LTS & minimum supported by Minecraft
+          ]
         # and run on both Linux and Windows
         os: [ubuntu-22.04, windows-2022]
     runs-on: ${{ matrix.os }}
@@ -38,3 +38,12 @@ jobs:
         with:
           name: Artifacts
           path: build/libs/
+      - name: publish
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: FGWvEfgd
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          version-type: alpha
+          dependencies: |
+            fabric-api
+            combat-roll(recommended)
