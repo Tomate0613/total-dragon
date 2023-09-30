@@ -14,6 +14,21 @@ repositories {
     // for more information about repositories.
 }
 
+tasks.register('printModVersion') {
+    doLast {
+        println project.mod_version
+    }
+}
+
+tasks.register('printMinecraftVersion') {
+    doLast {
+        println project.minecraft_version
+    }
+}
+
+build.dependsOn printModVersion
+build.dependsOn printMinecraftVersion
+
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings loom.officialMojangMappings()

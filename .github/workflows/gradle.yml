@@ -31,7 +31,11 @@ jobs:
         if: ${{ runner.os != 'Windows' }}
         run: chmod +x ./gradlew
       - name: build
-        run: ./gradlew build
+        run: |
+          ./gradlew build
+          # Capture the value of project.mod_version and store it as an output variable
+          echo "::set-output name=mod_version::$(./gradlew -q printModVersion | tail -n 1)"
+          echo "::set-output name=minecraft_version::$(./gradlew -q printMinecraftVersion | tail -n 1)"
       - name: capture build artifacts
         if: ${{ runner.os == 'Linux' && matrix.java == '17' }} # Only upload artifacts built from latest java on one OS
         uses: actions/upload-artifact@v3
@@ -45,3 +49,5 @@ jobs:
           modrinth-id: FGWvEfgd
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           version-type: alpha
+          files: |
+            build/libs/total-dragon-${{ steps.build.outputs.mod_version }}-${{ steps.build.outputs.minecraft_version }}.jar
