@@ -14,15 +14,6 @@ repositories {
     // for more information about repositories.
 }
 
-tasks.register('setEnvVar') {
-    doLast {
-         environment 'MOD_VERISON' project.mod_version
-         environment 'MINECRAFT_VERSION' project.minecraft_version
-    }
-}
-
-build.dependsOn setEnvVar
-
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings loom.officialMojangMappings()
