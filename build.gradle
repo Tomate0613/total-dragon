@@ -16,9 +16,8 @@ repositories {
 
 tasks.register('setEnvVar') {
     doLast {
-         System.setProperty('MOD_VERISON', project.mod_version);
-         System.setProperty('MINECRAFT_VERSION', project.minecraft_version)
-        println project.mod_version
+         environment 'MOD_VERISON' project.mod_version
+         environment 'MINECRAFT_VERSION' project.minecraft_version
     }
 }
 
