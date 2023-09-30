@@ -14,20 +14,15 @@ repositories {
     // for more information about repositories.
 }
 
-tasks.register('printModVersion') {
+tasks.register('setEnvVar') {
     doLast {
+         System.setProperty('MOD_VERISON', project.mod_version);
+         System.setProperty('MINECRAFT_VERSION', project.minecraft_version)
         println project.mod_version
     }
 }
 
-tasks.register('printMinecraftVersion') {
-    doLast {
-        println project.minecraft_version
-    }
-}
-
-build.dependsOn printModVersion
-build.dependsOn printMinecraftVersion
+build.dependsOn setEnvVar
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
