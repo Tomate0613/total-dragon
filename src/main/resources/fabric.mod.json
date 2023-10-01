@@ -43,7 +43,6 @@
     "mc-publish": {
       "dependencies": [
         "combat-roll(recommended)",
-        "fabric-api"
       ],
       "loaders": ["fabric", "quilt"]
     }
