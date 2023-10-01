@@ -41,6 +41,7 @@
 
   "custom": {
     "mc-publish": {
+      "version": "1.0",
       "dependencies": [
         "combat-roll(recommended)",
       ],
