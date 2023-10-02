@@ -42,9 +42,7 @@
   "custom": {
     "mc-publish": {
       "version": "1.0",
-      "dependencies": [
-        "combat-roll(recommended)",
-      ],
+      "dependencies": ["combat-roll(recommended)"],
       "loaders": ["fabric", "quilt"]
     }
   }
