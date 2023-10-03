@@ -34,4 +34,3 @@ jobs:
           modrinth-id: FGWvEfgd
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           version-type: alpha
-          files: build/libs/*.jar
