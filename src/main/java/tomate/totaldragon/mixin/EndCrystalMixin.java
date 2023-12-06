@@ -35,7 +35,6 @@ public abstract class EndCrystalMixin extends Entity {
         if (damageSource.getEntity() instanceof EnderDragon) {
             return false;
         }
-
         if (!this.isRemoved() && !this.level().isClientSide && active) {
             active = false;
 
@@ -76,6 +75,9 @@ public abstract class EndCrystalMixin extends Entity {
 
     @Unique
     private void spawnEndermite() {
+        if(!DragonConfig.spawnEndermitesInFight)
+            return;
+
         var endermite = new Endermite(EntityType.ENDERMITE, level());
         endermite.setPos(position());
         level().addFreshEntity(endermite);
@@ -83,6 +85,9 @@ public abstract class EndCrystalMixin extends Entity {
 
     @Unique
     private void spawnPhantoms(LivingEntity target) {
+        if(DragonConfig.phantomBehaviour == DragonConfig.PhantomBehaviour.NO_PHANTOMS_IN_FIGHT)
+            return;
+
         var phantom = new Phantom(EntityType.PHANTOM, level());
         phantom.setPos(position());
         phantom.setTarget(target);
