@@ -13,7 +13,7 @@ public class DragonConfigModel {
         VANILLA_PHANTOMS,
         IMPROVED_PHANTOMS_IN_FIGHT,
         IMPROVED_PHANTOMS_ALWAYS
-    };
+    }
 
     public boolean playersFallIntoOverworld = true;
     public boolean chainReactionEndCrystals = true;
