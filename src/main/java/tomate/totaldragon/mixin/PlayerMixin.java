@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import tomate.totaldragon.DragonConfig;
+import tomate.totaldragon.TotalDragon;
 
 import java.util.Objects;
 
@@ -31,7 +31,7 @@ public abstract class PlayerMixin extends LivingEntity {
 
     @Inject(at = @At("HEAD"), method="isInvulnerableTo", cancellable = true)
     void isInvulnerableTo(DamageSource damageSource, CallbackInfoReturnable<Boolean> cir) {
-        if(!DragonConfig.playersFallIntoOverworld)
+        if(!TotalDragon.CONFIG.playersFallIntoOverworld())
             return;
 
         if(damageSource.is(DamageTypes.FELL_OUT_OF_WORLD)){

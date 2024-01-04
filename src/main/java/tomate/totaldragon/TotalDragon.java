@@ -27,6 +27,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import tomate.totaldragon.config.DragonConfig;
 import tomate.totaldragon.effects.DragonBreath;
 import tomate.totaldragon.phases.CustomEnderDragonPhase;
 
@@ -42,6 +43,8 @@ public class TotalDragon implements ModInitializer {
     public static final SimpleParticleType SHOCKWAVE = FabricParticleTypes.simple();
     public static final MobEffect DRAGON_BREATH = new DragonBreath();
     public static final Logger LOGGER = LoggerFactory.getLogger("total-dragon");
+
+    public static final DragonConfig CONFIG = DragonConfig.createAndLoad();
 
     @Override
     public void onInitialize() {

@@ -9,10 +9,12 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import tomate.totaldragon.DragonConfig;
+import tomate.totaldragon.TotalDragon;
+import tomate.totaldragon.config.DragonConfigModel;
 
 @Mixin(Phantom.class)
 public abstract class PhantomMixin extends FlyingMob {
@@ -24,7 +26,7 @@ public abstract class PhantomMixin extends FlyingMob {
 
     @Inject(at = @At("TAIL"), method = "<init>")
     void init(EntityType<?> entityType, Level level, CallbackInfo ci) {
-        if(DragonConfig.phantomBehaviour != DragonConfig.PhantomBehaviour.IMPROVED_PHANTOMS_ALWAYS && !(DragonConfig.phantomBehaviour == DragonConfig.PhantomBehaviour.IMPROVED_PHANTOMS_IN_FIGHT && level().dimension() != Level.END))
+        if(TotalDragon.CONFIG.phantomBehaviour() != DragonConfigModel.PhantomBehaviour.IMPROVED_PHANTOMS_ALWAYS && !(TotalDragon.CONFIG.phantomBehaviour() == DragonConfigModel.PhantomBehaviour.IMPROVED_PHANTOMS_IN_FIGHT && level().dimension() == Level.END))
             return;
 
         updatePhantomSize();
@@ -46,13 +48,13 @@ public abstract class PhantomMixin extends FlyingMob {
         return super.hurt(damageSource, f);
     }
 
+    @Unique
     private void updatePhantomSize() {
         var dimensionsAccessible = ((EntityDimensionsAccessor)this);
         dimensionsAccessible.setDimensions(dimensionsAccessible.getDimensions().scale(2, 1.2f));
 
         if(level().dimension() == Level.END) {
             getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(25 + this.getPhantomSize());
-            return;
         }
     }
 }

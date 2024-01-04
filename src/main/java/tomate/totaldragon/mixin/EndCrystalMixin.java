@@ -14,7 +14,8 @@ import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
-import tomate.totaldragon.DragonConfig;
+import tomate.totaldragon.TotalDragon;
+import tomate.totaldragon.config.DragonConfigModel;
 
 @Mixin(EndCrystal.class)
 public abstract class EndCrystalMixin extends Entity {
@@ -47,11 +48,11 @@ public abstract class EndCrystalMixin extends Entity {
 
             this.remove(Entity.RemovalReason.KILLED);
 
-            if (!damageSource.is(DamageTypeTags.IS_EXPLOSION) || DragonConfig.chainReactionEndCrystals) {
+            if (!damageSource.is(DamageTypeTags.IS_EXPLOSION) || TotalDragon.CONFIG.chainReactionEndCrystals()) {
                 DamageSource explosionDamageSource = damageSource.getEntity() != null ? this.damageSources().explosion(this, damageSource.getEntity()) : null;
                 this.level().explode(this, explosionDamageSource, null, this.getX(), this.getY(), this.getZ(), 6.0f, false, Level.ExplosionInteraction.BLOCK);
 
-                if(DragonConfig.endCrystalSpawns) {
+                if(TotalDragon.CONFIG.endCrystalSpawns()) {
                     if (damageSource.getEntity() instanceof Player player) {
                         if (player.position().distanceToSqr(position()) < 100) {
                             int count = random.nextInt(5, 10);
@@ -75,7 +76,7 @@ public abstract class EndCrystalMixin extends Entity {
 
     @Unique
     private void spawnEndermite() {
-        if(!DragonConfig.spawnEndermitesInFight)
+        if(!TotalDragon.CONFIG.spawnEndermitesInFight())
             return;
 
         var endermite = new Endermite(EntityType.ENDERMITE, level());
@@ -85,7 +86,7 @@ public abstract class EndCrystalMixin extends Entity {
 
     @Unique
     private void spawnPhantoms(LivingEntity target) {
-        if(DragonConfig.phantomBehaviour == DragonConfig.PhantomBehaviour.NO_PHANTOMS_IN_FIGHT)
+        if(TotalDragon.CONFIG.phantomBehaviour() == DragonConfigModel.PhantomBehaviour.NO_PHANTOMS_IN_FIGHT)
             return;
 
         var phantom = new Phantom(EntityType.PHANTOM, level());

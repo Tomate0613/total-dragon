@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import tomate.totaldragon.DragonConfig;
+import tomate.totaldragon.TotalDragon;
 
 @Mixin(EnderDragonPhaseManager.class)
 public class EnderDragonPhaseManagerMixin {
@@ -20,7 +20,7 @@ public class EnderDragonPhaseManagerMixin {
 
     @Inject(at = @At("HEAD"), method = "setPhase")
     void setPhase(EnderDragonPhase<?> enderDragonPhase, CallbackInfo ci) {
-        if(!DragonConfig.logDragonPhasesToInGameChat)
+        if(!TotalDragon.CONFIG.logDragonPhasesToInGameChat())
             return;
 
         MinecraftServer server = this.dragon.getServer();

@@ -1,0 +1,14 @@
+{
+  "text.config.dragon-config.title": "TotalDragon Config",
+  "text.config.dragon-config.option.playersFallIntoOverworld": "Players fall into overworld",
+  "text.config.dragon-config.option.chainReactionEndCrystals": "EndCrystal chain reaction",
+  "text.config.dragon-config.option.endCrystalSpawns": "EndCrystal spawns mobs",
+  "text.config.dragon-config.option.spawnEndermitesInFight": "EndCrystal can spawn endermites",
+  "text.config.dragon-config.option.phantomBehaviour": "Phantom behaviour",
+  "text.config.dragon-config.option.logDragonPhasesToInGameChat": "[DEBUG] Log dragon phase to chat",
+
+  "text.config.dragon-config.enum.phantomBehaviour.improved_phantoms_in_fight": "Improve in fight",
+  "text.config.dragon-config.enum.phantomBehaviour.improved_phantoms_always": "Improve always",
+  "text.config.dragon-config.enum.phantomBehaviour.no_phantoms_in_fight": "No phantoms in fight",
+  "text.config.dragon-config.enum.phantomBehaviour.vanilla_phantoms": "Vanilla phantoms"
+}
