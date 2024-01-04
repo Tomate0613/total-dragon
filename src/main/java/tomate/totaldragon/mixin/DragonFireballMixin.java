@@ -43,7 +43,7 @@ public class DragonFireballMixin extends AbstractHurtingProjectile {
     @Override
     public void onHit(HitResult hitResult) {
         super.onHit(hitResult);
-        if (hitResult.getType() == HitResult.Type.ENTITY && this.ownedBy(((EntityHitResult)hitResult).getEntity())) {
+        if (hitResult.getType() == HitResult.Type.ENTITY && this.ownedBy(((EntityHitResult) hitResult).getEntity())) {
             return;
         }
         List<LivingEntity> list = this.level().getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(100, 100, 100));
@@ -62,7 +62,7 @@ public class DragonFireballMixin extends AbstractHurtingProjectile {
             }
         }
 
-        if(nearestEntity == null) {
+        if (nearestEntity == null) {
             return;
         }
 
@@ -75,17 +75,17 @@ public class DragonFireballMixin extends AbstractHurtingProjectile {
 
         Entity entity = this.getOwner();
         if (entity instanceof LivingEntity) {
-            areaEffectCloud.setOwner((LivingEntity)entity);
+            areaEffectCloud.setOwner((LivingEntity) entity);
         }
 
         areaEffectCloud.setParticle(ParticleTypes.DRAGON_BREATH);
-        areaEffectCloud.setRadius(level().getRandom().nextIntBetweenInclusive(10, 14)); // 6 is a good value for easier difficulty, which I might add in the future
-        areaEffectCloud.setDuration(600);
-        areaEffectCloud.setRadiusPerTick(0.001f); // 0.01f is a good value for easier difficulty
-        areaEffectCloud.setWaitTime(20);
-        areaEffectCloud.addEffect(new MobEffectInstance(TotalDragon.DRAGON_BREATH, 1, 2));
-        ((AreaEffectCloudReapplicationDelayAccessor)areaEffectCloud).reapplicationDelay(10);
-        areaEffectCloud.setRadiusOnUse(1);
+        areaEffectCloud.setRadius(level().getRandom().nextIntBetweenInclusive(TotalDragon.CONFIG.fireball.minRadius(), TotalDragon.CONFIG.fireball.maxRadius())); // 6 is a good value for easier difficulty, which I might add in the future
+        areaEffectCloud.setDuration(TotalDragon.CONFIG.fireball.duration());
+        areaEffectCloud.setRadiusPerTick(TotalDragon.CONFIG.fireball.radiusPerTick()); // 0.01f is a good value for easier difficulty
+        areaEffectCloud.setWaitTime(TotalDragon.CONFIG.fireball.waitTime());
+        areaEffectCloud.addEffect(new MobEffectInstance(TotalDragon.DRAGON_BREATH, TotalDragon.CONFIG.fireball.effectDuration(), TotalDragon.CONFIG.fireball.effectAmplifier()));
+        ((AreaEffectCloudReapplicationDelayAccessor) areaEffectCloud).reapplicationDelay(TotalDragon.CONFIG.fireball.reapplicationDelay());
+        areaEffectCloud.setRadiusOnUse(TotalDragon.CONFIG.fireball.radiusOnUse());
 
         this.level().levelEvent(2006, this.blockPosition(), this.isSilent() ? -1 : 1);
         this.level().addFreshEntity(areaEffectCloud);
