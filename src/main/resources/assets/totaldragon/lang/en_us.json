@@ -12,7 +12,7 @@
   "text.config.dragon-config.option.fireball.minRadius": "Min radius",
   "text.config.dragon-config.option.fireball.maxRadius": "Max radius",
   "text.config.dragon-config.option.fireball.duration": "Duration",
-  "text.config.dragon-config.option.fireball.radiusPerTick": "Radius per tick",
+  "text.config.dragon-config.option.fireball.radiusPerSecond": "Radius per second",
   "text.config.dragon-config.option.fireball.radiusOnUse": "Radius on use",
   "text.config.dragon-config.option.fireball.waitTime": "Wait time",
   "text.config.dragon-config.option.fireball.reapplicationDelay": "Reapplication delay",

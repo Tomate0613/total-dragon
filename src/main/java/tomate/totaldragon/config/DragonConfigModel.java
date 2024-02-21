@@ -34,8 +34,8 @@ public class DragonConfigModel {
 
         @RangeConstraint(min = 10, max = 1000)
         public int duration = 600;
-        @RangeConstraint(min = 10, max = 1000)
-        public float radiusPerTick = 0.001f;
+        @RangeConstraint(min = 0, max = 1)
+        public float radiusPerSecond = 0.02f;
         @RangeConstraint(min = -10, max = 10)
         public float radiusOnUse = 1;
         @RangeConstraint(min = 1, max = 100)

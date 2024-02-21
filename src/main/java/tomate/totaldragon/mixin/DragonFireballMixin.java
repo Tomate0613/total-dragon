@@ -81,7 +81,7 @@ public class DragonFireballMixin extends AbstractHurtingProjectile {
         areaEffectCloud.setParticle(ParticleTypes.DRAGON_BREATH);
         areaEffectCloud.setRadius(level().getRandom().nextIntBetweenInclusive(TotalDragon.CONFIG.fireball.minRadius(), TotalDragon.CONFIG.fireball.maxRadius())); // 6 is a good value for easier difficulty, which I might add in the future
         areaEffectCloud.setDuration(TotalDragon.CONFIG.fireball.duration());
-        areaEffectCloud.setRadiusPerTick(TotalDragon.CONFIG.fireball.radiusPerTick()); // 0.01f is a good value for easier difficulty
+        areaEffectCloud.setRadiusPerTick(TotalDragon.CONFIG.fireball.radiusPerSecond() / 20); // 0.01f is a good value for easier difficulty
         areaEffectCloud.setWaitTime(TotalDragon.CONFIG.fireball.waitTime());
         areaEffectCloud.addEffect(new MobEffectInstance(TotalDragon.DRAGON_BREATH, TotalDragon.CONFIG.fireball.effectDuration(), TotalDragon.CONFIG.fireball.effectAmplifier()));
         ((AreaEffectCloudReapplicationDelayAccessor) areaEffectCloud).reapplicationDelay(TotalDragon.CONFIG.fireball.reapplicationDelay());
