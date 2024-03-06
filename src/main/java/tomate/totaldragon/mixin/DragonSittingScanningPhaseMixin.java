@@ -85,7 +85,6 @@ public abstract class DragonSittingScanningPhaseMixin extends AbstractDragonSitt
             cooldown += 20;
 
             var pos = FightState.crystalPositions.poll();
-            FightState.respawnSpike(pos);
         }
     }
 }
